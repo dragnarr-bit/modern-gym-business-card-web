@@ -7,8 +7,8 @@
    ------------------------------------------------------------ */
 :root {
   /* Brand accent */
-  --accent:         #18a04c;   /* electric lime — the "pulse" of the brand  */
-  --accent-dim:     #1dc45d;
+  --accent:         #1dc45d;   /* electric lime — the "pulse" of the brand  */
+  --accent-dim:     #18a04c;
   --accent-glow:    rgba(232, 255, 58, 0.18);
 
   /* Backgrounds */
