@@ -282,6 +282,23 @@ document.querySelectorAll('.service-card').forEach(card => {
   });
 });
 
+const logoMark = document.querySelector(".logo-mark");
+
+function updateLogoForTheme() {
+  if (!logoMark) return;
+
+  const theme = document.documentElement.dataset.theme;
+  logoMark.src =
+    theme === "light"
+      ? logoMark.dataset.lightLogo
+      : logoMark.dataset.darkLogo;
+}
+
+updateLogoForTheme();
+
+themeToggle?.addEventListener("click", () => {
+  setTimeout(updateLogoForTheme, 0);
+});
 
 /* ================================================================
    11. HERO NAME HOVER — scramble effect on .hero-name
