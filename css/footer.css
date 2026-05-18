@@ -35,11 +35,14 @@
 }
 
 .footer-logo {
-  font-family:    var(--font-display);
-  font-size:      1.25rem;
-  letter-spacing: 0.06em;
-  color:          rgba(240, 237, 230, 0.85);
-  line-height:    1;
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  transition: transform 180ms ease;
+}
+
+.footer-logo:hover {
+  transform: scale(1.12);
 }
 
 .footer-dot {
