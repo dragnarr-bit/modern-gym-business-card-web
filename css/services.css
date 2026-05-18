@@ -100,7 +100,7 @@
   inset:      0;
   background: linear-gradient(
     135deg,
-    rgba(232, 255, 58, 0.05) 0%,
+    rgba(58, 255, 74, 0.25) 0%,
     transparent 60%
   );
   opacity:    0;
@@ -125,7 +125,7 @@
 .service-card:hover {
   transform:    translateY(-6px) scale(1.01);
   box-shadow:   var(--shadow-lg);
-  border-color: rgba(232, 255, 58, 0.25);
+  border-color: rgba(58, 255, 74, 0.25);
 }
 
 .service-card:hover::before { opacity: 1;    }
@@ -150,7 +150,7 @@
 }
 
 .service-card:hover .card-number {
-  color: rgba(232, 255, 58, 0.12);
+  color: rgba(58, 255, 94, 0.12);
 }
 
 /* ------------------------------------------------------------
@@ -235,7 +235,28 @@
   color: var(--accent);
 }
 
-.service-card:hover {
+/* .card-arrow {
+  display:    flex;
+  align-items: center;
+  justify-content: center;
+  width:       28px;
+  height:      28px;
+  border:      1px solid var(--border);
+  border-radius: 50%;
+  color:       var(--text-muted);
+  transition:
+    background    var(--dur-base) var(--ease-io),
+    border-color  var(--dur-base) var(--ease-io),
+    color         var(--dur-base) var(--ease-io),
+    transform     var(--dur-base) var(--ease-out);
+}
+
+.card-arrow svg {
+  width:  12px;
+  height: 12px;
+} */
+
+.service-card:hover .card-arrow {
   background:   var(--accent);
   border-color: var(--accent);
   color:        #111110;
