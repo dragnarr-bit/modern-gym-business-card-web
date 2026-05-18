@@ -64,7 +64,7 @@
   font-size:       0.875rem;
   letter-spacing:  0.05em;
   border-radius:   var(--radius-sm);
-  transition:      background var(--dur-fast);
+  transition:      background var(--dur-fast), transform var(--dur-fast);
 }
 
 .logo-text {
@@ -75,10 +75,14 @@
   text-transform: uppercase;
   color:          var(--text-primary);
 }
-/*
-.nav-logo:hover .logo-mark {
 
-}*/
+.nav-logo:hover .logo-mark {
+  transform: scale(1.12);
+}
+
+.nav-logo:active .logo-mark {
+  transform: scale(1.04);
+}
 
 /* ------------------------------------------------------------
    4. Desktop Nav Links
