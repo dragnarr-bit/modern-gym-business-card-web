@@ -1,4 +1,4 @@
-# Marcus Cole — Elite Trainer Website
+# Kelvin Mariano — Personal Trainer Website
 
 A modern, single-page business card website for a gym instructor / personal trainer.
 
