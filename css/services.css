@@ -235,28 +235,7 @@
   color: var(--accent);
 }
 
-.card-arrow {
-  display:    flex;
-  align-items: center;
-  justify-content: center;
-  width:       28px;
-  height:      28px;
-  border:      1px solid var(--border);
-  border-radius: 50%;
-  color:       var(--text-muted);
-  transition:
-    background    var(--dur-base) var(--ease-io),
-    border-color  var(--dur-base) var(--ease-io),
-    color         var(--dur-base) var(--ease-io),
-    transform     var(--dur-base) var(--ease-out);
-}
-
-.card-arrow svg {
-  width:  12px;
-  height: 12px;
-}
-
-.service-card:hover .card-arrow {
+.service-card:hover {
   background:   var(--accent);
   border-color: var(--accent);
   color:        #111110;
