@@ -22,6 +22,8 @@ project-root/
 └── assets/
     ├── images/             (add local hero/about photos here)
     ├── favicons/           (add any custom favicon assets here)
+    │   ├── dark 
+    │   └── light           
     └── logo/               (add any logo icon assets here)
 ```
 
