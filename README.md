@@ -21,7 +21,8 @@ project-root/
 │   └── script.js           Nav scroll, theme toggle, reveal, form
 └── assets/
     ├── images/             (add local hero/about photos here)
-    └── icons/              (add any custom icon assets here)
+    ├── favicons/           (add any custom favicon assets here)
+    └── logo/               (add any logo icon assets here)
 ```
 
 ## Features
