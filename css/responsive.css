@@ -63,7 +63,6 @@
   }
 }
 
-
 /* ============================================================
    MOBILE — ≤ 768px
    ============================================================ */
@@ -74,6 +73,28 @@
     --space-xl:  3rem;
     --space-2xl: 4rem;
     --space-3xl: 5rem;
+  }
+
+  /* --- Navbar: tighten container so hamburger is never clipped --- */
+  .nav-container {
+    gap:             0.75rem;         /* was 2.5rem — far too wide on 390px */
+    padding-inline:  1rem;            /* fixed value, not clamp */
+  }
+
+  /* Hide nav links entirely on mobile (hamburger replaces them) */
+  .nav-links { display: none; }
+
+  /* Theme toggle: shrink slightly */
+  .theme-toggle {
+    width:  38px;
+    height: 38px;
+  }
+
+  /* Hamburger: ensure it is always fully visible */
+  .hamburger {
+    display:    flex;
+    flex-shrink: 0;
+    margin-right: 0;   /* no extra offset */
   }
 
   /* --- Navbar: hide text logo on very small --- */
@@ -163,6 +184,12 @@
 
   :root { --container-pad: 1rem; }
 
+  /* Navbar: absolute minimum gap so hamburger is never cut off */
+  .nav-container {
+    gap:            0.5rem;
+    padding-inline: 0.875rem;
+  }
+
   .hero-name {
     font-size: clamp(3.5rem, 22vw, 5.5rem);
   }
@@ -251,8 +278,9 @@
 
   .hero-photo-panel {
     height: clamp(260px, 60vw, 360px);
-    /* stop floating on mobile — can cause layout jumps */
-    animation: none;
+    /* Keep reveal active on mobile so the frame becomes visible. */
+    animation: heroFadeUp 0.7s var(--ease-out) forwards;
+    animation-delay: calc(var(--i) * 0.14s + 0.1s);
   }
 
   /* Badges: reposition to fit smaller photo */
@@ -271,7 +299,16 @@
 
 /* SMALL MOBILE ≤ 480px */
 @media (max-width: 480px) {
-  .hero-photo-panel { height: clamp(220px, 70vw, 300px); }
+  .hero-photo-panel {
+    width: min(100%, calc(100vw - (var(--container-pad) * 2)));
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .photo-frame {
+    width: 100%;
+    height: 100%;
+  }
 
   .photo-badge--bottom { display: none; } /* too cramped */
 
