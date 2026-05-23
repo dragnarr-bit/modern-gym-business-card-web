@@ -4,36 +4,16 @@ A modern single-page website for a gym instructor / personal trainer.
 
 ## Preview
 
-Install dependencies:
+Run a local static server from the project root:
 
 ```bash
-npm install
+python -m http.server 5173 --bind 127.0.0.1
 ```
 
-Create a local `.env` file:
-
-```bash
-cp .env.example .env
-```
-
-Set these values:
+Then open:
 
 ```text
-RESEND_API_KEY=re_your_api_key
-RESEND_FROM_EMAIL="Kelvin Mariano <you@your-verified-domain.com>"
-CONTACT_TO_EMAIL=marianokelvin@yahoo.com
-```
-
-Run the Vercel dev server from the project root so `/api/contact` is available:
-
-```bash
-npm run dev
-```
-
-Then open the local URL shown by Vercel, usually:
-
-```text
-http://localhost:3000
+http://127.0.0.1:5173/index.html
 ```
 
 ## Project Structure
@@ -53,8 +33,6 @@ project-root/
 |   `-- responsive.css      Breakpoints for 1024px, 768px, and 480px
 |-- js/
 |   `-- script.js           Nav scroll, theme toggle, reveal, form behavior
-|-- api/
-|   `-- contact.js          Resend contact-form email endpoint
 `-- assets/
     |-- images/             Local hero/about photos
     |-- favicon/            Dark and light favicon assets
@@ -72,11 +50,5 @@ project-root/
 - Active nav link highlight on scroll
 - Service card 3D tilt on mouse move
 - Hero name scramble effect on hover
-- Contact form with client-side validation and Resend email delivery
+- Contact form with client-side validation
 - Responsive desktop, tablet, mobile, and small-mobile layouts
-
-## Resend Setup
-
-The browser posts contact submissions to `/api/contact`, which sends the email with Resend on the server side. Add the same environment variables from `.env.example` to your hosting provider.
-
-For production, use a sender email from a verified Resend domain for `RESEND_FROM_EMAIL`.

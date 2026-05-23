@@ -32,7 +32,6 @@ const mobileLinks = document.querySelectorAll('.mobile-link');
 const revealEls   = document.querySelectorAll('.reveal');
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
-const formError   = document.getElementById('formError');
 
 /* Sections used for active-link detection */
 const sections = document.querySelectorAll('section[id]');
@@ -189,7 +188,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
    9. CONTACT FORM — client-side validation + success state
    ================================================================ */
 if (contactForm) {
-  contactForm.addEventListener('submit', async function (e) {
+  contactForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
     const fname   = contactForm.querySelector('#fname');
@@ -215,6 +214,7 @@ if (contactForm) {
 
     if (!isValid) return;
 
+    // --- Simulate async send (replace with real API call) ---
     const submitBtn  = contactForm.querySelector('.btn--submit');
     const btnText    = submitBtn.querySelector('.btn-text');
     const btnOriginal = btnText.textContent;
@@ -222,33 +222,16 @@ if (contactForm) {
     submitBtn.disabled  = true;
     btnText.textContent = 'Sending…';
 
-    formSuccess.hidden = true;
-    formError.hidden = true;
-
-    try {
-      const payload = Object.fromEntries(new FormData(contactForm).entries());
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      const result = await response.json().catch(() => ({}));
-
-      if (!response.ok) {
-        throw new Error(result.message || 'Unable to send your message.');
-      }
-
+    setTimeout(() => {
+      // Success
       contactForm.reset();
-      formSuccess.hidden = false;
+      formSuccess.hidden      = false;
+      submitBtn.disabled      = false;
+      btnText.textContent     = btnOriginal;
+
+      // Remove success after 6 seconds
       setTimeout(() => { formSuccess.hidden = true; }, 6000);
-    } catch (error) {
-      formError.querySelector('p').textContent =
-        error.message || 'Sorry, your message could not be sent right now. Please try again or email me directly.';
-      formError.hidden = false;
-    } finally {
-      submitBtn.disabled = false;
-      btnText.textContent = btnOriginal;
-    }
+    }, 1200);
   });
 
   // Clear errors on input
