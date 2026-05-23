@@ -1,0 +1,128 @@
+/* ============================================================
+   photo-banner.css — full-width cinematic photo strip between
+   services and contact sections
+   ============================================================ */
+
+/* 1. Section wrapper */
+.photo-banner {
+  position:   relative;
+  height:     clamp(340px, 40vw, 520px);
+  overflow:   hidden;
+  background: #0A0A09;
+}
+
+/* 2. Horizontal track — flex row of images */
+.banner-track {
+  display:    flex;
+  width:      100%;
+  height:     100%;
+  gap:        0;
+}
+
+/* 3. Individual image cells */
+.banner-item {
+  position:   relative;
+  flex:       1;
+  overflow:   hidden;
+  cursor:     default;
+}
+
+.banner-item img {
+  width:       100%;
+  height:      100%;
+  object-fit:  cover;
+  object-position: center;
+  display:     block;
+  transition:  transform 0.8s var(--ease-out),
+               filter    0.8s var(--ease-out);
+  filter:      saturate(0.20) brightness(0.65) contrast(1.10);
+}
+
+/* Hover: desaturate lifts, scale zooms */
+.banner-item:hover img {
+  transform: scale(1.08);
+  filter:    saturate(0.65) brightness(0.75) contrast(1.05);
+}
+
+/* Per-item overlay tint */
+.banner-item-overlay {
+  position:   absolute;
+  inset:      0;
+  background: rgba(14, 14, 13, 0.30);
+  transition: background var(--dur-slow) var(--ease-io);
+  pointer-events: none;
+}
+
+.banner-item:hover .banner-item-overlay {
+  background: rgba(14, 14, 13, 0.10);
+}
+
+/* Thin accent line on hover */
+.banner-item::after {
+  content:    '';
+  position:   absolute;
+  bottom:     0; left: 0; right: 0;
+  height:     3px;
+  background: var(--accent);
+  transform:  scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease-out);
+}
+.banner-item:hover::after { transform: scaleX(1); }
+
+/* 4. Centred quote overlay */
+.banner-quote {
+  position:        absolute;
+  inset:           0;
+  z-index:         3;
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  justify-content: center;
+  text-align:      center;
+  pointer-events:  none;
+  padding-inline:  var(--container-pad);
+}
+
+.banner-quote-text {
+  font-family:    var(--font-display);
+  font-size:      clamp(1.75rem, 4vw, 3.5rem);
+  font-weight:    400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color:          rgba(240, 237, 230, 0.90);
+  text-shadow:    0 2px 30px rgba(0,0,0,0.80);
+  line-height:    1.1;
+  max-width:      800px;
+}
+
+.banner-quote-attr {
+  display:        block;
+  margin-top:     0.75rem;
+  font-family:    var(--font-condensed);
+  font-size:      0.6875rem;
+  font-weight:    600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color:          var(--accent);
+}
+
+/* 5. Edge fade overlays — blend into surrounding sections */
+.banner-fade {
+  position:   absolute;
+  top:        0;
+  bottom:     0;
+  width:      12%;
+  z-index:    4;
+  pointer-events: none;
+}
+
+.banner-fade--left {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-section) 0%, transparent 100%);
+}
+
+.banner-fade--right {
+  right: 0;
+  background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
+}

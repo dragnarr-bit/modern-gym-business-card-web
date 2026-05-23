@@ -1,0 +1,264 @@
+/* ============================================================
+   services.css — 3-column service card grid with hover animations
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. Section Wrapper
+   ------------------------------------------------------------ */
+.services {
+  padding-block: var(--space-3xl);
+  background:    var(--bg-section);
+  position:      relative;
+  overflow:      hidden;
+}
+
+/* Decorative top diagonal rule */
+.services::before {
+  content:    '';
+  position:   absolute;
+  top:        0;
+  left:       0;
+  right:      0;
+  height:     3px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity:    0.5;
+}
+
+/* ------------------------------------------------------------
+   2. Section Header
+   ------------------------------------------------------------ */
+.services-header {
+  display:         flex;
+  align-items:     flex-end;
+  justify-content: space-between;
+  gap:             var(--space-lg);
+  margin-bottom:   var(--space-xl);
+}
+
+.services-heading {
+  font-family:    var(--font-display);
+  font-size:      clamp(2.5rem, 5vw, 4.5rem);
+  font-weight:    400;
+  line-height:    0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color:          var(--text-primary);
+}
+
+.services-heading em {
+  font-style:  italic;
+  font-family: var(--font-display);
+  color:       var(--accent);
+}
+
+.services-sub {
+  font-family: var(--font-body);
+  font-size:   0.9375rem;
+  font-weight: 300;
+  color:       var(--text-muted);
+  max-width:   26ch;
+  text-align:  right;
+  line-height: 1.5;
+  padding-bottom: 0.4rem;
+}
+
+/* ------------------------------------------------------------
+   3. Service Cards Grid
+   ------------------------------------------------------------ */
+.services-grid {
+  display:               grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:                   1.25rem;
+}
+
+/* ------------------------------------------------------------
+   4. Individual Service Card
+   ------------------------------------------------------------ */
+.service-card {
+  position:       relative;
+  background:     var(--bg-card);
+  border:         1px solid var(--border);
+  border-radius:  var(--radius-lg);
+  padding:        var(--space-lg);
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-sm);
+  overflow:       hidden;
+  cursor:         default;
+
+  /* GPU-composited properties only for silky animation */
+  transition:
+    transform   var(--dur-slow) var(--ease-out),
+    box-shadow  var(--dur-slow) var(--ease-out),
+    border-color var(--dur-base) var(--ease-io);
+}
+
+/* Shine overlay (revealed on hover) */
+.service-card::before {
+  content:    '';
+  position:   absolute;
+  inset:      0;
+  background: linear-gradient(
+    135deg,
+    rgba(58, 255, 74, 0.25) 0%,
+    transparent 60%
+  );
+  opacity:    0;
+  transition: opacity var(--dur-slow) var(--ease-out);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Accent border bottom line */
+.service-card::after {
+  content:    '';
+  position:   absolute;
+  bottom:     0;
+  left:       0;
+  width:      0%;
+  height:     2px;
+  background: var(--accent);
+  transition: width var(--dur-slow) var(--ease-out);
+}
+
+/* Hover state */
+.service-card:hover {
+  transform:    translateY(-6px) scale(1.01);
+  box-shadow:   var(--shadow-lg);
+  border-color: rgba(58, 255, 74, 0.25);
+}
+
+.service-card:hover::before { opacity: 1;    }
+.service-card:hover::after  { width:   100%; }
+
+/* ------------------------------------------------------------
+   5. Card Number (top-right watermark)
+   ------------------------------------------------------------ */
+.card-number {
+  position:       absolute;
+  top:            var(--space-md);
+  right:          var(--space-md);
+  font-family:    var(--font-display);
+  font-size:      4rem;
+  font-weight:    400;
+  line-height:    1;
+  color:          var(--border);
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  transition:     color var(--dur-slow) var(--ease-out);
+  user-select:    none;
+}
+
+.service-card:hover .card-number {
+  color: rgba(58, 255, 94, 0.12);
+}
+
+/* ------------------------------------------------------------
+   6. Card Icon
+   ------------------------------------------------------------ */
+.card-icon {
+  width:         48px;
+  height:        48px;
+  display:       flex;
+  align-items:   center;
+  justify-content: center;
+  background:    var(--bg-section);
+  border:        1px solid var(--border);
+  border-radius: var(--radius-md);
+  color:         var(--text-secondary);
+  flex-shrink:   0;
+  transition:
+    background    var(--dur-base) var(--ease-io),
+    border-color  var(--dur-base) var(--ease-io),
+    color         var(--dur-base) var(--ease-io),
+    transform     var(--dur-slow) var(--ease-out);
+}
+
+.card-icon svg {
+  width:  22px;
+  height: 22px;
+}
+
+.service-card:hover .card-icon {
+  background:   var(--accent);
+  border-color: var(--accent);
+  color:        #111110;
+  transform:    rotate(-6deg) scale(1.08);
+}
+
+/* ------------------------------------------------------------
+   7. Card Text
+   ------------------------------------------------------------ */
+.card-title {
+  font-family:    var(--font-condensed);
+  font-size:      1.1875rem;
+  font-weight:    700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color:          var(--text-primary);
+  line-height:    1.2;
+  margin-top:     var(--space-xs);
+  padding-right:  2.5rem; /* prevent overlap with card-number */
+}
+
+.card-desc {
+  font-size:   0.875rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color:       var(--text-secondary);
+  flex:        1;
+}
+
+/* ------------------------------------------------------------
+   8. Card Footer
+   ------------------------------------------------------------ */
+.card-footer {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  margin-top:      auto;
+  padding-top:     var(--space-sm);
+  border-top:      1px solid var(--border);
+}
+
+.card-detail {
+  font-family:    var(--font-condensed);
+  font-size:      0.625rem;
+  font-weight:    600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color:          var(--text-muted);
+  transition:     color var(--dur-fast);
+}
+
+.service-card:hover .card-detail {
+  color: var(--accent);
+}
+
+/* .card-arrow {
+  display:    flex;
+  align-items: center;
+  justify-content: center;
+  width:       28px;
+  height:      28px;
+  border:      1px solid var(--border);
+  border-radius: 50%;
+  color:       var(--text-muted);
+  transition:
+    background    var(--dur-base) var(--ease-io),
+    border-color  var(--dur-base) var(--ease-io),
+    color         var(--dur-base) var(--ease-io),
+    transform     var(--dur-base) var(--ease-out);
+}
+
+.card-arrow svg {
+  width:  12px;
+  height: 12px;
+} */
+
+.service-card:hover .card-arrow {
+  background:   var(--accent);
+  border-color: var(--accent);
+  color:        #111110;
+  transform:    translateX(3px);
+}

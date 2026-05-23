@@ -1,0 +1,309 @@
+/* ============================================================
+   contact.css — contact info panel + form layout
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. Section Wrapper
+   ------------------------------------------------------------ */
+.contact {
+  padding-block: var(--space-3xl);
+  background:    var(--bg);
+}
+
+/* ------------------------------------------------------------
+   2. Two-column Grid
+   ------------------------------------------------------------ */
+.contact-grid {
+  display:               grid;
+  grid-template-columns: 1fr 1fr;
+  gap:                   var(--space-xl);
+  align-items:           start;
+}
+
+/* ------------------------------------------------------------
+   3. Contact Info (left)
+   ------------------------------------------------------------ */
+.contact-info {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-lg);
+}
+
+.contact-heading {
+  font-family:    var(--font-display);
+  font-size:      clamp(3rem, 6vw, 5.5rem);
+  font-weight:    400;
+  line-height:    0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color:          var(--text-primary);
+}
+
+.contact-heading em {
+  font-style:  italic;
+  font-family: var(--font-display);
+  color:       var(--accent);
+}
+
+.contact-intro {
+  font-size:   1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color:       var(--text-secondary);
+  max-width:   42ch;
+}
+
+/* ------------------------------------------------------------
+   4. Contact Detail Items
+   ------------------------------------------------------------ */
+.contact-details {
+  display:        flex;
+  flex-direction: column;
+  gap:            0;
+  list-style:     none;
+  border:         1px solid var(--border);
+  border-radius:  var(--radius-md);
+  overflow:       hidden;
+}
+
+.contact-item {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-sm);
+  padding:     1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  transition:  background var(--dur-fast);
+  text-decoration: none;
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+.contact-item:hover {
+  background: var(--bg-section);
+}
+
+.contact-icon {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  width:           36px;
+  height:          36px;
+  background:      var(--bg-section);
+  border:          1px solid var(--border);
+  border-radius:   var(--radius-sm);
+  color:           var(--accent);
+  flex-shrink:     0;
+  transition:
+    background   var(--dur-fast),
+    border-color var(--dur-fast);
+}
+
+.contact-icon svg {
+  width:  16px;
+  height: 16px;
+}
+
+.contact-item:hover .contact-icon {
+  background:   var(--accent);
+  border-color: var(--accent);
+  color:        #111110;
+}
+
+.contact-label {
+  display:        block;
+  font-family:    var(--font-condensed);
+  font-size:      0.5625rem;
+  font-weight:    600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color:          var(--text-muted);
+  margin-bottom:  0.1rem;
+}
+
+.contact-value {
+  display:     block;
+  font-family: var(--font-condensed);
+  font-size:   0.9375rem;
+  font-weight: 600;
+  color:       var(--text-primary);
+  text-decoration: none;
+  transition:  color var(--dur-fast);
+}
+
+a.contact-value:hover,
+.contact-item:hover a.contact-value {
+  color: var(--accent);
+}
+
+/* ------------------------------------------------------------
+   5. Social Links
+   ------------------------------------------------------------ */
+.social-links {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.5rem;
+}
+
+.social-link {
+  display:     flex;
+  align-items: center;
+  gap:         0.75rem;
+  padding:     0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  color:       var(--text-secondary);
+  font-family: var(--font-condensed);
+  font-size:   0.8125rem;
+  font-weight: 600;
+  transition:
+    color        var(--dur-fast),
+    padding-left var(--dur-base) var(--ease-out);
+}
+
+.social-link:last-child { border-bottom: none; }
+
+.social-link svg {
+  width:      18px;
+  height:     18px;
+  flex-shrink: 0;
+  color:      var(--text-muted);
+  transition: color var(--dur-fast);
+}
+
+.social-link:hover {
+  color:        var(--accent);
+  padding-left: 6px;
+}
+
+.social-link:hover svg {
+  color: var(--accent);
+}
+
+/* ------------------------------------------------------------
+   6. Contact Form Wrapper
+   ------------------------------------------------------------ */
+.contact-form-wrap {
+  background:    var(--bg-card);
+  border:        1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding:       var(--space-lg);
+  box-shadow:    var(--shadow-md);
+}
+
+/* ------------------------------------------------------------
+   7. Form Layout
+   ------------------------------------------------------------ */
+.contact-form {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-sm);
+}
+
+/* Two-column row for first / last name */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap:     var(--space-sm);
+}
+
+.form-group {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.375rem;
+}
+
+/* Labels */
+.form-group label {
+  font-family:    var(--font-condensed);
+  font-size:      0.6rem;
+  font-weight:    600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color:          var(--text-muted);
+}
+
+/* Inputs, selects, textareas */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width:         100%;
+  padding:       0.75rem 1rem;
+  background:    var(--bg-section);
+  border:        1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color:         var(--text-primary);
+  font-size:     0.9375rem;
+  font-weight:   400;
+  outline:       none;
+  transition:
+    border-color var(--dur-fast),
+    box-shadow   var(--dur-fast),
+    background   var(--dur-fast);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* Placeholder */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* Focus ring */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow:   0 0 0 3px var(--accent-glow);
+  background:   var(--bg-card);
+}
+
+/* Select arrow */
+.form-group select {
+  background-image:    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23888880' stroke-width='1.5'%3E%3Cpolyline points='4,6 8,10 12,6'/%3E%3C/svg%3E");
+  background-repeat:   no-repeat;
+  background-position: right 0.9rem center;
+  background-size:     16px;
+  padding-right:       2.5rem;
+  cursor:              pointer;
+}
+
+/* Textarea */
+.form-group textarea {
+  resize:      vertical;
+  min-height:  120px;
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------
+   8. Form Success State
+   ------------------------------------------------------------ */
+.form-success {
+  display:         flex;
+  align-items:     center;
+  gap:             0.75rem;
+  padding:         1rem 1.25rem;
+  background:      rgba(232, 255, 58, 0.10);
+  border:          1px solid var(--accent);
+  border-radius:   var(--radius-sm);
+  margin-top:      var(--space-xs);
+}
+
+.form-success svg {
+  width:    20px;
+  height:   20px;
+  color:    var(--accent);
+  flex-shrink: 0;
+}
+
+.form-success p {
+  font-family: var(--font-condensed);
+  font-size:   0.875rem;
+  font-weight: 600;
+  color:       var(--text-primary);
+}
+
+.form-success[hidden] { 
+    display: none; 
+}
