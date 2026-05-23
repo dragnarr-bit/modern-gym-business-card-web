@@ -200,6 +200,10 @@ a.contact-value:hover,
   gap:            var(--space-sm);
 }
 
+.botcheck {
+  display: none;
+}
+
 /* Two-column row for first / last name */
 .form-row {
   display: grid;
@@ -306,4 +310,23 @@ a.contact-value:hover,
 
 .form-success[hidden] { 
     display: none; 
+}
+
+.form-error {
+  padding:       1rem 1.25rem;
+  background:    rgba(255, 77, 77, 0.10);
+  border:        1px solid #FF4D4D;
+  border-radius: var(--radius-sm);
+  margin-top:    var(--space-xs);
+}
+
+.form-error p {
+  font-family: var(--font-condensed);
+  font-size:   0.875rem;
+  font-weight: 600;
+  color:       var(--text-primary);
+}
+
+.form-error[hidden] {
+  display: none;
 }
